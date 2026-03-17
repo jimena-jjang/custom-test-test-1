@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.name | default: 'Custom Page' }}</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>{{ project.name | default: 'Welcome to Your Custom Project' }}</h1>
+            <p>{{ project.description | default: '이곳은 동적으로 생성된 사용자 지정 페이지입니다.' }}</p>
+        </header>
+
+        <main class="content-card">
+            <h2>템플릿 시작하기</h2>
+            <p>이 파일은 DevPortal에서 새 프로젝트를 생성할 때 복사되어 초기 코드로 사용됩니다.</p>
+            <ul>
+                <li><strong>HTML 구조:</strong> <code>index.html</code> 파일을 수정하여 페이지의 뼈대를 만드세요.</li>
+                <li><strong>스타일링:</strong> 내부 <code>&lt;style&gt;</code> 태그나 외부 CSS를 활용해 디자인을 변경할 수 있습니다.</li>
+                <li><strong>데이터 바인딩:</strong> Liquid.js 문법(<code>&#123;&#123; variable &#125;&#125;</code>)을 사용하여 동적인 데이터를 연동할 수 있습니다.</li>
+            </ul>
+        </main>
+
+        <footer class="footer">
+            &copy; 2024 DevPortal Custom Projects
+        </footer>
+    </div>
+</body>
+</html>

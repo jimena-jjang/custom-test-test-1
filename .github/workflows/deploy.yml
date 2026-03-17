@@ -1,0 +1,46 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+          else
+            echo "No package.json found. Skipping npm ci."
+          fi
+          
+      - name: Build Project
+        run: |
+          if [ -f package.json ] && grep -q '"build"' package.json; then
+            npm run build
+          else
+            echo "No build script found or needed."
+          fi
+          
+      - name: Deploy Placeholder
+        run: |
+          echo "Deploying to stage environment..."
+          # 실제 배포 환경에 맞는 명령어로 교체하세요. (예: AWS S3 Sync, Docker Build & Push 등)
+          # 예시: aws s3 sync ./dist s3://my-bucket/custom-project
+          echo "Deployment successful."
